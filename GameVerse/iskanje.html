@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Iskanje</title>
+        <link id="theme-style" rel="stylesheet" href="iskanje_darkMode.css">
+        <script>
+            window.onload = function () {
+                const themeLink = document.getElementById('theme-style');
+
+                // Determine the page-specific CSS filenames
+                const currentPage = window.location.pathname.split('/').pop(); // Get the current file name
+                const darkModeFile = currentPage.replace('.html', '_darkMode.css');
+                const lightModeFile = currentPage.replace('.html', '_lightMode.css');
+
+                // Load the saved theme (light or dark) from localStorage
+                const savedMode = localStorage.getItem('theme') || 'dark'; // Default to 'dark' if no preference is set
+                themeLink.setAttribute('href', savedMode === 'dark' ? darkModeFile : lightModeFile);
+
+                // Function to toggle between light and dark modes
+                function toggleMode() {
+                    if (savedMode === 'dark') {
+                        themeLink.setAttribute('href', lightModeFile);
+                        localStorage.setItem('theme', 'light'); // Save preference as 'light'
+                    } else {
+                        themeLink.setAttribute('href', darkModeFile);
+                        localStorage.setItem('theme', 'dark'); // Save preference as 'dark'
+                    }
+                }
+
+                // Expose toggleMode globally so it can be used in the HTML
+                window.toggleMode = toggleMode;
+
+                // Function to update today's date
+                function updateDate() {
+                    const dateElement = document.getElementById('current-date');
+                    const now = new Date();
+
+                    // Format date as day/month/year
+                    const day = String(now.getDate()).padStart(2, '0'); // Add leading zero if needed
+                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                    const year = now.getFullYear();
+
+                    const dateString = `${day}/${month}/${year}`;
+                    dateElement.textContent = dateString;
+                }
+
+                updateDate(); // Call once to show the date immediately
+            };
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="logo">
+                    <img src="Slike/logo.png" alt="logo" id="logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Doma</a></li>
+                        <li><a href="iskanje.html" class="active">Iskanje</a></li>
+                        <li><a href="ocene.html">Ocene</a></li>
+                    </ul>
+                </nav>
+                <div class="mode-toggle" onclick="toggleMode()">
+                    <img src="Slike/mode.png" alt="Mode" id="mode-icon">
+                </div>
+                <div class="datum">
+                    <span id="current-date"></span>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="content">
+                    <h1 class="search-title">ISKANJE</h1>
+                    <div class="topics">
+                        <button class="topic-button">IGRE</button>
+                        <button class="topic-button">FILMI</button>
+                        <button class="topic-button">TV ODDAJE</button>
+                        <button class="topic-button">STRIPI</button>
+                        <button class="topic-button">MUZIKA</button>
+                    </div>
+                    <div class="search-bar">
+                        <form>
+                            <input type="text" class="search-input" placeholder="Search" required />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

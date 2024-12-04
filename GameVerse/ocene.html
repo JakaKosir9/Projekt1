@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ocene</title>
+        <link id="theme-style" rel="stylesheet" href="ocene_darkMode.css">
+        <script>
+            window.onload = function() {
+                const themeLink = document.getElementById('theme-style');
+
+                // Determine the page-specific CSS filenames
+                const currentPage = window.location.pathname.split('/').pop(); // Get the current file name
+                const darkModeFile = currentPage.replace('.html', '_darkMode.css');
+                const lightModeFile = currentPage.replace('.html', '_lightMode.css');
+
+                // Load the saved theme (light or dark) from localStorage
+                const savedMode = localStorage.getItem('theme') || 'dark'; // Default to 'dark' if no preference is set
+                themeLink.setAttribute('href', savedMode === 'dark' ? darkModeFile : lightModeFile);
+
+                // Function to toggle between light and dark modes
+                function toggleMode() {
+                    if (savedMode === 'dark') {
+                        themeLink.setAttribute('href', lightModeFile);
+                        localStorage.setItem('theme', 'light'); // Save preference as 'light'
+                    } else {
+                        themeLink.setAttribute('href', darkModeFile);
+                        localStorage.setItem('theme', 'dark'); // Save preference as 'dark'
+                    }
+                }
+
+                // Expose toggleMode globally so it can be used in the HTML
+                window.toggleMode = toggleMode;
+                // Function to update today's date
+                function updateDate() {
+                    const dateElement = document.getElementById('current-date');
+                    const now = new Date();
+
+                    // Format date as day/month/year
+                    const day = String(now.getDate()).padStart(2, '0'); // Add leading zero if needed
+                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                    const year = now.getFullYear();
+
+                    const dateString = `${day}/${month}/${year}`;
+                    dateElement.textContent = dateString;
+                }
+
+                updateDate(); // Call once to show the date immediately
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="logo">
+                    <img src="Slike/logo.png" alt="logo" id="logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Doma</a></li>
+                        <li><a href="iskanje.html">Iskanje</a></li>
+                        <li><a href="ocene.html" class="active">Ocene</a></li>
+                    </ul>
+                </nav>
+                <div class="mode-toggle" onclick="toggleMode()">
+                    <img src="Slike/mode.png" alt="Mode" id="mode-icon">
+                </div>
+                <div class="datum">
+                    <span id="current-date"></span>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <h1>Priljubljene ocene</h1>
+                <div class="review">
+                    <img src="Slike/avatar1.png" alt="Avatar" class="avatar">
+                    <div class="review-details">
+                        <p class="time">20h</p>
+                        <h2>Dune: Prophecy Episode 3 Pregled</h2>
+                        <p class="views">23 ogledov</p>
+                    </div>
+                </div>
+                <div class="review">
+                    <img src="Slike/avatar2.png" alt="Avatar" class="avatar">
+                    <div class="review-details">
+                        <p class="time">6d</p>
+                        <h2>Moana 2 Pregled</h2>
+                        <p class="views">274 ogledov</p>
+                    </div>
+                </div>
+                <div class="review">
+                    <img src="Slike/avatar3.png" alt="Avatar" class="avatar">
+                    <div class="review-details">
+                        <p class="time">9d</p>
+                        <h2>STALKER 2: Heart of Chernobyl Pregled</h2>
+                        <p class="views">1.2k ogledov</p>
+                    </div>
+                </div>
+                <div class="review">
+                    <img src="Slike/avatar4.png" alt="Avatar" class="avatar">
+                    <div class="review-details">
+                        <p class="time">2t</p>
+                        <h2>Watchmen: Chapter II Pregled</h2>
+                        <p class="views">169 ogledov</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
