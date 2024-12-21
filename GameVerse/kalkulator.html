@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kalkulator stran</title>
+        <link id="theme-style" rel="stylesheet" href="kalkulator_darkMode.css">
+        <script>
+            // Funkcija, ki se zažene ob nalaganju strani
+            window.onload = function () {
+                const themeLink = document.getElementById('theme-style');
+
+                // Določimo datoteke za temni in svetli način glede na trenutno stran
+                const currentPage = window.location.pathname.split('/').pop(); // Pridobi ime trenutne datoteke
+                const darkModeFile = currentPage.replace('.html', '_darkMode.css');
+                const lightModeFile = currentPage.replace('.html', '_lightMode.css');
+
+                // Naloži shranjeni način (temni ali svetli) iz localStorage
+                const savedMode = localStorage.getItem('theme') || 'dark'; // Privzeto 'dark', če ni shranjenega načina
+                themeLink.setAttribute('href', savedMode === 'dark' ? darkModeFile : lightModeFile);
+
+                // Funkcija za preklapljanje med svetlim in temnim načinom
+                function toggleMode() {
+                    const newMode = savedMode === 'dark' ? 'light' : 'dark';
+                    themeLink.setAttribute('href', newMode === 'dark' ? darkModeFile : lightModeFile);
+                    localStorage.setItem('theme', newMode);
+                }
+
+                // Omogočimo globalni dostop do toggleMode
+                window.toggleMode = toggleMode;
+
+                // Funkcija za posodobitev današnjega datuma
+                function updateDate() {
+                    const dateElement = document.getElementById('current-date');
+                    const now = new Date();
+
+                    // Oblikovanje datuma kot dan/mesec/leto
+                    const day = String(now.getDate()).padStart(2, '0'); // Dodaj začetno ničlo, če je potrebno
+                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Meseci so indeksirani od 0
+                    const year = now.getFullYear();
+
+                    const dateString = `${day}/${month}/${year}`;
+                    dateElement.textContent = dateString;
+                }
+
+                updateDate(); // Takoj prikaže trenutni datum
+            };
+
+            // Funkcija za izračun rezultatov
+            function calculate() {
+                const num1 = parseFloat(document.getElementById('num1').value);
+                const num2 = parseFloat(document.getElementById('num2').value);
+                const operation = document.getElementById('operation').value;
+                let result = "";
+
+                // Preveri, če so vnesene veljavne številke
+                if (isNaN(num1) || isNaN(num2)) {
+                    result = "Prosimo, vnesite veljavne številke.";
+                } else {
+                    // Izvedba izbrane matematične operacije
+                    switch (operation) {
+                        case "add":
+                            result = num1 + num2;
+                            break;
+                        case "subtract":
+                            result = num1 - num2;
+                            break;
+                        case "multiply":
+                            result = num1 * num2;
+                            break;
+                        case "divide":
+                            result = num2 !== 0 ? num1 / num2 : "Napaka: Deljenje z 0 ni dovoljeno.";
+                            break;
+                        default:
+                            result = "Napaka: Neveljavna operacija.";
+                    }
+                }
+
+                // Prikaz rezultata na strani
+                document.getElementById('result').textContent = `${result}`;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Stranska vrstica -->
+            <div class="sidebar">
+                <div class="logo">
+                    <img src="Slike/logo.png" alt="logo" id="logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="active">Doma</a></li>
+                        <li><a href="iskanje.html">Iskanje</a></li>
+                        <li><a href="ocene.html">Ocene</a></li>
+                        <li><a href="kalkulator.html">Kalkulator</a></li>
+                    </ul>
+                </nav>
+                <div class="mode-toggle" onclick="toggleMode()">
+                    <img src="Slike/mode.png" alt="Mode" id="mode-icon">
+                </div>
+                <div class="datum">
+                    <span id="current-date"></span>
+                </div>
+                <div class="cookie">
+                    <p id="score">Kliknil: 0-krat</p>
+                    <img id="cookie" src="Slike/cookie.png" alt="cookieClicker" onClick="cookieClick();">
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Glavni naslov strani -->
+                <h1 class="featured-title">Kalkulator za igralne statistike</h1>
+                
+                <!-- Uvodno besedilo -->
+                <div class="text-container"> 
+                <p class="intro-text">
+                    Dobrodošli v orodju za izračun igralnih statistik! To orodje je zasnovano za igralce, 
+                    ki želijo izboljšati svoje sposobnosti in analizirati svojo učinkovitost v različnih igrah. 
+                    S tem kalkulatorjem lahko hitro in enostavno ocenite svoje dosežke, kot so skupne dosežene točke, 
+                    povprečen čas igranja, razmerje med zmagami in porazi ter druge ključne statistike, ki so pomembne za vaš napredek. 
+                </p>
+                </div>
+                
+                <!-- Kalkulator za igralne statistike -->
+                <div class="calculator-section">       
+                    <div class="calculator">
+                        <p>Vnesite prvi podatek:</p>
+                        <div>
+                        <label for="num1"></label>
+                        <input type="number" id="num1" placeholder="">
+                        <br>
+                        <p>Izberite operacijo:</p>
+                        <label for="operation"></label>
+                        <select id="operation">
+                            <option value="add">+</option>
+                            <option value="subtract">-</option>
+                            <option value="multiply">*</option>
+                            <option value="divide">:</option>
+                        </select>
+                        <br>
+                        <p>Vnesite drugi podatek:</p>
+                        <label for="num2"></label>
+                        <input type="number" id="num2" placeholder="">
+                        <br>
+                        <button onclick="calculate()">Izračunaj</button>
+                        <p id="result"></p>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </body>
+</html>
