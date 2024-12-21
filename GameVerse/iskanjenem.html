@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Index-Seite</title>
-        <link id="theme-style" rel="stylesheet" href="index_darkMode.css">
+        <title>Suche</title>
+        <link id="theme-style" rel="stylesheet" href="iskanje_darkMode.css">
         <script>
             window.onload = function () {
                 const themeLink = document.getElementById('theme-style');
@@ -48,24 +48,6 @@
 
                 updateDate(); // Einmal aufrufen, um das Datum sofort anzuzeigen
             };
-            
-            function showMoreCards() {
-                const hiddenCards = document.querySelectorAll('.hidden-cards');
-                hiddenCards.forEach(card => {
-                    card.style.display = 'block';
-                });
-                document.getElementById('show-more-btn').style.display = 'none';
-
-                // Container-Höhe an die neue Seitengröße anpassen
-                const container = document.querySelector('.container');
-                container.style.height = `${document.documentElement.scrollHeight}px`;
-            }
-
-            let score = 0;
-            function cookieClick(){
-                score++;
-                document.getElementById('score').textContent = "Geklickt: " + score + "-mal";
-            }
         </script>
     </head>
     <body>
@@ -77,8 +59,8 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="indexnem.html" class="active">Startseite</a></li>
-                        <li><a href="iskanjenem.html">Suche</a></li>
+                        <li><a href="indexnem.html">Startseite</a></li>
+                        <li><a href="iskanjenem.html" class="active">Suche</a></li>
                         <li><a href="ocenenem.html">Bewertungen</a></li>
                         <li><a href="kalkulatornem.html">Rechner</a></li>
                         <li><a href="index.html">Slovenščina</a></li>
@@ -90,44 +72,25 @@
                 <div class="datum">
                     <span id="current-date"></span>
                 </div>
-                <div class="cookie">
-                    <p id="score">Geklickt: 0-mal</p>
-                    <img id="cookie" src="Slike/cookie.png" alt="CookieClicker" onClick="cookieClick();">
-                </div>
             </div>
 
             <!-- Hauptinhalt -->
             <div class="main-content">
-                <h1 class="featured-title">Empfohlene Spiele</h1>
-                <div class="featured-section">
-                    <div class="card">
-                        <img src="Slike/mario&luigi.png" alt="Mario und Luigi">
-                        <h3>Mario und Luigi: Brüderschaft</h3>
+                <div class="content">
+                    <h1 class="search-title">SUCHE</h1>
+                    <div class="topics">
+                        <button class="topic-button">SPIELE</button>
+                        <button class="topic-button">FILME</button>
+                        <button class="topic-button">TV-SENDUNGEN</button>
+                        <button class="topic-button">COMICS</button>
+                        <button class="topic-button">MUSIK</button>
                     </div>
-                    <div class="card">
-                        <img src="Slike/silentAbandoned.png" alt="Silent Abandoned">
-                        <h3>Silent: Verlassen</h3>
-                    </div>
-                    <div class="card">
-                        <img src="Slike/PokemonTCG.png" alt="Pokemon TCG">
-                        <h3>Pokemon TCG</h3>
-                    </div>
-
-                    <!-- Versteckte Karten -->
-                    <div class="card hidden-cards">
-                        <img src="Slike/terraria.png" alt="Terraria">
-                        <h3>Terraria</h3>
-                    </div>
-                    <div class="card hidden-cards">
-                        <img src="Slike/minecraft.png" alt="Minecraft">
-                        <h3>Minecraft</h3>
-                    </div>
-                    <div class="card hidden-cards">
-                        <img src="Slike/yumenikki.jpg" alt="Yume Nikki">
-                        <h3>Yume Nikki</h3>
+                    <div class="search-bar">
+                        <form>
+                            <input type="text" class="search-input" placeholder="Suchen" required />
+                        </form>
                     </div>
                 </div>
-                <button id="show-more-btn" class="show-more-btn" onclick="showMoreCards()">Mehr anzeigen</button>
             </div>
         </div>
     </body>

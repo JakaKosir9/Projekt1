@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kalkulator-Seite</title>
+        <link id="theme-style" rel="stylesheet" href="kalkulator_darkMode.css">
+        <script>
+            // Funktion, die beim Laden der Seite ausgeführt wird
+            window.onload = function () {
+                const themeLink = document.getElementById('theme-style');
+
+                // Bestimme Dateien für den Dunkel- und Hellmodus basierend auf der aktuellen Seite
+                const currentPage = window.location.pathname.split('/').pop(); // Holt den Namen der aktuellen Datei
+                const darkModeFile = currentPage.replace('.html', '_darkMode.css');
+                const lightModeFile = currentPage.replace('.html', '_lightMode.css');
+
+                // Lade den gespeicherten Modus (dunkel oder hell) aus dem localStorage
+                const savedMode = localStorage.getItem('theme') || 'dark'; // Standard ist 'dark', falls kein Modus gespeichert ist
+                themeLink.setAttribute('href', savedMode === 'dark' ? darkModeFile : lightModeFile);
+
+                // Funktion zum Umschalten zwischen Hell- und Dunkelmodus
+                function toggleMode() {
+                    const newMode = savedMode === 'dark' ? 'light' : 'dark';
+                    themeLink.setAttribute('href', newMode === 'dark' ? darkModeFile : lightModeFile);
+                    localStorage.setItem('theme', newMode);
+                }
+
+                // Ermögliche globalen Zugriff auf toggleMode
+                window.toggleMode = toggleMode;
+
+                // Funktion zur Aktualisierung des heutigen Datums
+                function updateDate() {
+                    const dateElement = document.getElementById('current-date');
+                    const now = new Date();
+
+                    // Formatierung des Datums als Tag/Monat/Jahr
+                    const day = String(now.getDate()).padStart(2, '0'); // Füge führende Null hinzu, falls nötig
+                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Monate sind nullbasiert
+                    const year = now.getFullYear();
+
+                    const dateString = `${day}/${month}/${year}`;
+                    dateElement.textContent = dateString;
+                }
+
+                updateDate(); // Zeigt sofort das aktuelle Datum an
+            };
+
+            // Funktion zur Berechnung der Ergebnisse
+            function calculate() {
+                const num1 = parseFloat(document.getElementById('num1').value);
+                const num2 = parseFloat(document.getElementById('num2').value);
+                const operation = document.getElementById('operation').value;
+                let result = "";
+
+                // Überprüfen, ob gültige Zahlen eingegeben wurden
+                if (isNaN(num1) || isNaN(num2)) {
+                    result = "Bitte geben Sie gültige Zahlen ein.";
+                } else {
+                    // Durchführung der ausgewählten mathematischen Operation
+                    switch (operation) {
+                        case "add":
+                            result = num1 + num2;
+                            break;
+                        case "subtract":
+                            result = num1 - num2;
+                            break;
+                        case "multiply":
+                            result = num1 * num2;
+                            break;
+                        case "divide":
+                            result = num2 !== 0 ? num1 / num2 : "Fehler: Division durch 0 ist nicht erlaubt.";
+                            break;
+                        default:
+                            result = "Fehler: Ungültige Operation.";
+                    }
+                }
+
+                // Anzeige des Ergebnisses auf der Seite
+                document.getElementById('result').textContent = `${result}`;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Seitenleiste -->
+            <div class="sidebar">
+                <div class="logo">
+                    <img src="Slike/logo.png" alt="Logo" id="logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="indexnem.html" class="active">Startseite</a></li>
+                        <li><a href="iskanjenem.html">Suche</a></li>
+                        <li><a href="ocenenem.html">Bewertungen</a></li>
+                        <li><a href="kalkulatornem.html">Rechner</a></li>
+                        <li><a href="index.html">Slovenščina</a></li>
+                    </ul>
+                </nav>
+                <div class="mode-toggle" onclick="toggleMode()">
+                    <img src="Slike/mode.png" alt="Modus" id="mode-icon">
+                </div>
+                <div class="datum">
+                    <span id="current-date"></span>
+                </div>
+                <div class="cookie">
+                    <p id="score">Geklickt: 0-mal</p>
+                    <img id="cookie" src="Slike/cookie.png" alt="Cookie-Clicker" onclick="cookieClick();">
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Hauptüberschrift der Seite -->
+                <h1 class="featured-title">Rechner für Spielstatistiken</h1>
+                
+                <!-- Einführungstext -->
+                <div class="text-container"> 
+                <p class="intro-text">
+                    Willkommen im Tool zur Berechnung von Spielstatistiken! Dieses Tool wurde für Spieler entwickelt, 
+                    die ihre Fähigkeiten verbessern und ihre Leistung in verschiedenen Spielen analysieren möchten. 
+                    Mit diesem Rechner können Sie schnell und einfach Ihre Erfolge bewerten, wie z. B. die insgesamt erzielten Punkte, 
+                    die durchschnittliche Spielzeit, das Verhältnis von Siegen zu Niederlagen und andere wichtige Statistiken, die für Ihren Fortschritt entscheidend sind.
+                </p>
+                </div>
+                
+                <!-- Rechner für Spielstatistiken -->
+                <div class="calculator-section">       
+                    <div class="calculator">
+                        <p>Geben Sie die erste Zahl ein:</p>
+                        <div>
+                        <label for="num1"></label>
+                        <input type="number" id="num1" placeholder="">
+                        <br>
+                        <p>Wählen Sie eine Operation:</p>
+                        <label for="operation"></label>
+                        <select id="operation">
+                            <option value="add">+</option>
+                            <option value="subtract">-</option>
+                            <option value="multiply">*</option>
+                            <option value="divide">:</option>
+                        </select>
+                        <br>
+                        <p>Geben Sie die zweite Zahl ein:</p>
+                        <label for="num2"></label>
+                        <input type="number" id="num2" placeholder="">
+                        <br>
+                        <button onclick="calculate()">Berechnen</button>
+                        <p id="result"></p>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </body>
+</html>
