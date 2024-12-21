@@ -1,52 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Index Stran</title>
-        <link id="theme-style" rel="stylesheet" href="index_darkMode.css">
+        <title>Index-Seite</title>
+        <link id="theme-style" rel="stylesheet" href="indexnem_darkMode.css">
         <script>
             window.onload = function () {
                 const themeLink = document.getElementById('theme-style');
 
-                // Determine the page-specific CSS filenames
-                const currentPage = window.location.pathname.split('/').pop(); // Get the current file name
+                // Bestimme die spezifischen CSS-Dateinamen für die Seite
+                const currentPage = window.location.pathname.split('/').pop(); // Holen Sie den aktuellen Dateinamen
                 const darkModeFile = currentPage.replace('.html', '_darkMode.css');
                 const lightModeFile = currentPage.replace('.html', '_lightMode.css');
 
-                // Load the saved theme (light or dark) from localStorage
-                const savedMode = localStorage.getItem('theme') || 'dark'; // Default to 'dark' if no preference is set
+                // Lade das gespeicherte Thema (hell oder dunkel) aus localStorage
+                const savedMode = localStorage.getItem('theme') || 'dark'; // Standard ist 'dunkel', wenn keine Präferenz gesetzt ist
                 themeLink.setAttribute('href', savedMode === 'dark' ? darkModeFile : lightModeFile);
 
-                // Function to toggle between light and dark modes
+                // Funktion zum Umschalten zwischen hellen und dunklen Modi
                 function toggleMode() {
                     if (savedMode === 'dark') {
                         themeLink.setAttribute('href', lightModeFile);
-                        localStorage.setItem('theme', 'light'); // Save preference as 'light'
+                        localStorage.setItem('theme', 'light'); // Präferenz als 'hell' speichern
                     } else {
                         themeLink.setAttribute('href', darkModeFile);
-                        localStorage.setItem('theme', 'dark'); // Save preference as 'dark'
+                        localStorage.setItem('theme', 'dark'); // Präferenz als 'dunkel' speichern
                     }
                 }
 
-                // Expose toggleMode globally so it can be used in the HTML
+                // Mach toggleMode global verfügbar, damit es im HTML verwendet werden kann
                 window.toggleMode = toggleMode;
 
-                // Function to update today's date
+                // Funktion zum Aktualisieren des heutigen Datums
                 function updateDate() {
                     const dateElement = document.getElementById('current-date');
                     const now = new Date();
 
-                    // Format date as day/month/year
-                    const day = String(now.getDate()).padStart(2, '0'); // Add leading zero if needed
-                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                    // Datum als Tag/Monat/Jahr formatieren
+                    const day = String(now.getDate()).padStart(2, '0'); // Führende Null hinzufügen, falls erforderlich
+                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Monate sind 0-indiziert
                     const year = now.getFullYear();
 
                     const dateString = `${day}/${month}/${year}`;
                     dateElement.textContent = dateString;
                 }
 
-                updateDate(); // Call once to show the date immediately
+                updateDate(); // Einmal aufrufen, um das Datum sofort anzuzeigen
             };
             
             function showMoreCards() {
@@ -56,7 +56,7 @@
                 });
                 document.getElementById('show-more-btn').style.display = 'none';
 
-                // Update container height to match the new page size
+                // Container-Höhe an die neue Seitengröße anpassen
                 const container = document.querySelector('.container');
                 container.style.height = `${document.documentElement.scrollHeight}px`;
             }
@@ -64,56 +64,56 @@
             let score = 0;
             function cookieClick(){
                 score++;
-                document.getElementById('score').textContent = "Kliknil: " + score + "-krat";
+                document.getElementById('score').textContent = "Geklickt: " + score + "-mal";
             }
         </script>
     </head>
     <body>
         <div class="container">
-            <!-- Sidebar -->
+            <!-- Seitenleiste -->
             <div class="sidebar">
                 <div class="logo">
-                    <img src="Slike/logo.png" alt="logo" id="logo">
+                    <img src="Slike/logo.png" alt="Logo" id="logo">
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="index.html" class="active">Doma</a></li>
-                        <li><a href="iskanje.html">Iskanje</a></li>
-                        <li><a href="ocene.html">Ocene</a></li>
-                        <li><a href="kalkulator.html">Kalkulator</a></li>
-                        <li><a href="indexnem.html">Nemški jezik</a></li>
+                        <li><a href="indexnem.html" class="active">Startseite</a></li>
+                        <li><a href="iskanjenem.html">Suche</a></li>
+                        <li><a href="ocenenem.html">Bewertungen</a></li>
+                        <li><a href="kalkulatornem.html">Rechner</a></li>
+                        <li><a href="index.html">Slovenščina</a></li>
                     </ul>
                 </nav>
                 <div class="mode-toggle" onclick="toggleMode()">
-                    <img src="Slike/mode.png" alt="Mode" id="mode-icon">
+                    <img src="Slike/mode.png" alt="Modus" id="mode-icon">
                 </div>
                 <div class="datum">
                     <span id="current-date"></span>
                 </div>
                 <div class="cookie">
-                    <p id="score">Kliknil: 0-krat</p>
-                    <img id="cookie" src="Slike/cookie.png" alt="cookieClicker" onClick="cookieClick();">
+                    <p id="score">Geklickt: 0-mal</p>
+                    <img id="cookie" src="Slike/cookie.png" alt="CookieClicker" onClick="cookieClick();">
                 </div>
             </div>
 
-            <!-- Main Content -->
+            <!-- Hauptinhalt -->
             <div class="main-content">
-                <h1 class="featured-title">Predstavljene Igre</h1>
+                <h1 class="featured-title">Empfohlene Spiele</h1>
                 <div class="featured-section">
                     <div class="card">
-                        <img src="Slike/mario&luigi.png" alt="Mario in Luigi">
-                        <h3>Mario and Luigi: Brothership</h3>
+                        <img src="Slike/mario&luigi.png" alt="Mario und Luigi">
+                        <h3>Mario und Luigi: Brüderschaft</h3>
                     </div>
                     <div class="card">
                         <img src="Slike/silentAbandoned.png" alt="Silent Abandoned">
-                        <h3>Silent: Abandoned</h3>
+                        <h3>Silent: Verlassen</h3>
                     </div>
                     <div class="card">
                         <img src="Slike/PokemonTCG.png" alt="Pokemon TCG">
                         <h3>Pokemon TCG</h3>
                     </div>
 
-                    <!-- Hidden Cards -->
+                    <!-- Versteckte Karten -->
                     <div class="card hidden-cards">
                         <img src="Slike/terraria.png" alt="Terraria">
                         <h3>Terraria</h3>
@@ -127,7 +127,7 @@
                         <h3>Yume Nikki</h3>
                     </div>
                 </div>
-                <button id="show-more-btn" class="show-more-btn" onclick="showMoreCards()">Poglej več</button>
+                <button id="show-more-btn" class="show-more-btn" onclick="showMoreCards()">Mehr anzeigen</button>
             </div>
         </div>
     </body>
