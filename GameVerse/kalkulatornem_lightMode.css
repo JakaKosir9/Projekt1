@@ -1,0 +1,213 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    background-color: #f4f7fc;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: #2a9df4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    position: relative;
+    top: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar nav ul li a {
+    font-weight: bold;
+    color: #fff;
+    background-color: #1c8fe3;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 8px 0;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2) inset;
+    padding-left: 2px;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #1a75d2;
+}
+
+.sidebar nav ul li a.active {
+    background-color: #1a75d2;
+    color: black;
+    padding-left: 10px;
+}
+
+.sidebar nav ul li a.active:hover {
+    background-color: #1a75d2ed;
+}
+
+/* Main Content Styles */
+.main-content {
+    padding: 40px;
+    width: 100%;
+    background-color: #f4f7fc; /* Dodano ozadje za ločitev od sidebarja */
+    border-radius: 8px; /* Rahlo zaobljeni robovi */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Dodan učinek sence */
+}
+
+.featured-title {
+    font-size: 45px;
+    color: #1a75d2; 
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-right: 50px;
+}
+
+/* Kalkulator Sekcija */
+.calculator-section, .text-container {
+    margin-top: 40px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    color: white;
+    width: 700px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Dodana senca za globino */
+}
+
+
+.calculator-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+/* Kalkulator */
+.calculator {
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Razmik med elementi */
+}
+
+.calculator label {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+    max-width: 300px;
+}
+
+.calculator input, .calculator select, .calculator button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    outline: none;
+}
+
+.calculator button {
+    background-color: #1a75d2;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.calculator button:hover {
+    background-color: #000000;
+    transform: translateY(-3px); /* Rahlo dvigne gumb ob prehodu miške */
+}
+
+#result {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #1a75d2;
+    font-weight: bold;
+}
+
+/* Logo */
+#logo {
+    height: 100px;
+    width: 120px;
+}
+
+/* Mode Toggle */
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.mode-toggle:hover {
+    opacity: 80%;
+}
+
+#mode-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/* Datum */
+.datum {
+    position: absolute;
+    bottom: 10px;
+    left: 65px;
+    font-size: 20px;
+    color: grey;
+}
+.intro-text {
+    text-align: justify; /* Obojestranska poravnava */
+    padding-top: 10px;
+    color: rgb(255, 255, 255);        /* Barva besedila */
+    font-size: 15px;     /* Velikost pisave */
+    line-height: 1.6;    /* Višina vrstice za boljšo berljivost */
+    margin: 20px 0;      /* Zunanji razmiki */
+}
+
+/* Cookie Section */
+.cookie {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+}
+
+.cookie img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.cookie p {
+    font-size: 18px;
+    color: #fff;
+    margin: 5px;
+}
