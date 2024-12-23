@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bewertungen</title>
-        <link id="theme-style" rel="stylesheet" href="ocenenem_darkMode.css">
+        <title>Index Site</title>
+        <link id="theme-style" rel="stylesheet" href="index_darkMode.css">
         <script>
-            window.onload = function() {
+            window.onload = function () {
                 const themeLink = document.getElementById('theme-style');
 
                 // Determine the page-specific CSS filenames
@@ -31,6 +31,7 @@
 
                 // Expose toggleMode globally so it can be used in the HTML
                 window.toggleMode = toggleMode;
+
                 // Function to update today's date
                 function updateDate() {
                     const dateElement = document.getElementById('current-date');
@@ -46,6 +47,24 @@
                 }
 
                 updateDate(); // Call once to show the date immediately
+            };
+            
+            function showMoreCards() {
+                const hiddenCards = document.querySelectorAll('.hidden-cards');
+                hiddenCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                document.getElementById('show-more-btn').style.display = 'none';
+
+                // Update container height to match the new page size
+                const container = document.querySelector('.container');
+                container.style.height = `${document.documentElement.scrollHeight}px`;
+            }
+
+            let score = 0;
+            function cookieClick(){
+                score++;
+                document.getElementById('score').textContent = "Clicked: " + score + "";
             }
         </script>
     </head>
@@ -58,13 +77,12 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="indexnem.html">Startseite</a></li>
-                        <li><a href="iskanjenem.html">Suche</a></li>
-                        <li><a href="ocenenem.html" class="active">Bewertungen</a></li>
-                        <li><a href="kalkulatornem.html">Rechner</a></li>
-                        <li><a href="ocene.html">Slowenisch</a></li>
-                        <li><a href="oceneen.html">Englisch</a></li>
-                        
+                        <li><a href="indexen.html" class="active">Home</a></li>
+                        <li><a href="iskanjeen.html">Search</a></li>
+                        <li><a href="oceneen.html">Ratings</a></li>
+                        <li><a href="kalkulatoren.html">Calculator</a></li>
+                        <li><a href="indexnem.html">German</a></li>
+                        <li><a href="index.html">Slovenian</a></li>
                     </ul>
                 </nav>
                 <div class="mode-toggle" onclick="toggleMode()">
@@ -73,43 +91,44 @@
                 <div class="datum">
                     <span id="current-date"></span>
                 </div>
+                <div class="cookie">
+                    <p id="score">Clicked: 0</p>
+                    <img id="cookie" src="Slike/cookie.png" alt="cookieClicker" onClick="cookieClick();">
+                </div>
             </div>
 
             <!-- Main Content -->
             <div class="main-content">
-                <h1>Beliebte Bewertungen</h1>
-                <div class="review">
-                    <img src="Slike/avatar1.png" alt="Avatar" class="avatar">
-                    <div class="review-details">
-                        <p class="time">20h</p>
-                        <h2>Dune: Prophecy Episode 3 Rezension</h2>
-                        <p class="views">23 Ansichten</p>
+                <h1 class="featured-title">Games</h1>
+                <div class="featured-section">
+                    <div class="card">
+                        <img src="Slike/mario&luigi.png" alt="Mario in Luigi">
+                        <h3>Mario and Luigi: Brothership</h3>
+                    </div>
+                    <div class="card">
+                        <img src="Slike/silentAbandoned.png" alt="Silent Abandoned">
+                        <h3>Silent: Abandoned</h3>
+                    </div>
+                    <div class="card">
+                        <img src="Slike/PokemonTCG.png" alt="Pokemon TCG">
+                        <h3>Pokemon TCG</h3>
+                    </div>
+
+                    <!-- Hidden Cards -->
+                    <div class="card hidden-cards">
+                        <img src="Slike/terraria.png" alt="Terraria">
+                        <h3>Terraria</h3>
+                    </div>
+                    <div class="card hidden-cards">
+                        <img src="Slike/minecraft.png" alt="Minecraft">
+                        <h3>Minecraft</h3>
+                    </div>
+                    <div class="card hidden-cards">
+                        <img src="Slike/yumenikki.jpg" alt="Yume Nikki">
+                        <h3>Yume Nikki</h3>
                     </div>
                 </div>
-                <div class="review">
-                    <img src="Slike/avatar2.png" alt="Avatar" class="avatar">
-                    <div class="review-details">
-                        <p class="time">6d</p>
-                        <h2>Moana 2 Rezension</h2>
-                        <p class="views">274 Ansichten</p>
-                    </div>
-                </div>
-                <div class="review">
-                    <img src="Slike/avatar3.png" alt="Avatar" class="avatar">
-                    <div class="review-details">
-                        <p class="time">9d</p>
-                        <h2>STALKER 2: Heart of Chernobyl Rezension</h2>
-                        <p class="views">1.2k Ansichten</p>
-                    </div>
-                </div>
-                <div class="review">
-                    <img src="Slike/avatar4.png" alt="Avatar" class="avatar">
-                    <div class="review-details">
-                        <p class="time">2w</p>
-                        <h2>Watchmen: Kapitel II Rezension</h2>
-                        <p class="views">169 Ansichten</p>
-                    </div>
-                </div>
+                <button id="show-more-btn" class="show-more-btn" onclick="showMoreCards()">Show more</button>
             </div>
         </div>
     </body>

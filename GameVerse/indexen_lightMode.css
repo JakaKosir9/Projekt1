@@ -1,0 +1,183 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc; /* Light background */
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: #2a9df4; /* Light blue */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    position: relative;
+    top: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar nav ul li a {
+    font-weight: bold;
+    color: #fff; /* White text */
+    background-color: #1c8fe3; /* Darker blue */
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 8px 0;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1) inset;
+    padding-left: 2px;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #1a75d2; /* Lighter blue */
+}
+
+.sidebar nav ul li a.active {
+    background-color: #156bb4; /* Active state blue */
+    color: #fff;
+    padding-left: 10px;
+}
+
+.sidebar nav ul li a.active:hover {
+    background-color: #145b94; /* Darker blue for active hover */
+}
+
+/* Main Content Styles */
+.main-content {
+    padding: 40px;
+    width: 100%;
+    background-color: #f4f7fc; /* Light background */
+}
+
+.featured-title {
+    font-size: 45px;
+    color: #1c8fe3; /* Blue title */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 0.1px 0.1px 0.1px;
+    text-align: center;
+}
+
+.featured-section {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #fff; /* White card background */
+    padding: 10px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px;
+    text-align: center;
+    width: 330px;
+    height: 400px;
+    max-width: none;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.hidden-cards {
+    display: none;
+    margin-top: 20px;
+}
+
+.show-more-btn {
+    background-color: #1c8fe3; /* Blue button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.show-more-btn:hover {
+    background-color: #156bb4; /* Darker blue on hover */
+}
+
+.card img {
+    width: auto;
+    height: 80%;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 25px;
+    color: #333; /* Dark text */
+}
+
+#logo {
+    height: 100px;
+    width: 120px;
+}
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+.mode-toggle:hover{
+    opacity: 80%;
+}
+
+#mode-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.datum {
+    position: absolute;
+    bottom: 10px;
+    left: 65px;
+    font-size: 20px;
+    color: white;
+}
+.cookie {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+}
+.cookie img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.cookie p {
+    font-size: 18px;
+    color: #fff;
+    margin: 5px;
+}

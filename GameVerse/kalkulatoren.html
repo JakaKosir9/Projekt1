@@ -1,63 +1,63 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Kalkulator-Seite</title>
-        <link id="theme-style" rel="stylesheet" href="kalkulatornem_darkMode.css">
+        <title>Calculator site</title>
+        <link id="theme-style" rel="stylesheet" href="kalkulator_darkMode.css">
         <script>
-            // Funktion, die beim Laden der Seite ausgeführt wird
+            // Funkcija, ki se zažene ob nalaganju strani
             window.onload = function () {
                 const themeLink = document.getElementById('theme-style');
 
-                // Bestimme Dateien für den Dunkel- und Hellmodus basierend auf der aktuellen Seite
-                const currentPage = window.location.pathname.split('/').pop(); // Holt den Namen der aktuellen Datei
+                // Določimo datoteke za temni in svetli način glede na trenutno stran
+                const currentPage = window.location.pathname.split('/').pop(); // Pridobi ime trenutne datoteke
                 const darkModeFile = currentPage.replace('.html', '_darkMode.css');
                 const lightModeFile = currentPage.replace('.html', '_lightMode.css');
 
-                // Lade den gespeicherten Modus (dunkel oder hell) aus dem localStorage
-                const savedMode = localStorage.getItem('theme') || 'dark'; // Standard ist 'dark', falls kein Modus gespeichert ist
+                // Naloži shranjeni način (temni ali svetli) iz localStorage
+                const savedMode = localStorage.getItem('theme') || 'dark'; // Privzeto 'dark', če ni shranjenega načina
                 themeLink.setAttribute('href', savedMode === 'dark' ? darkModeFile : lightModeFile);
 
-                // Funktion zum Umschalten zwischen Hell- und Dunkelmodus
+                // Funkcija za preklapljanje med svetlim in temnim načinom
                 function toggleMode() {
                     const newMode = savedMode === 'dark' ? 'light' : 'dark';
                     themeLink.setAttribute('href', newMode === 'dark' ? darkModeFile : lightModeFile);
                     localStorage.setItem('theme', newMode);
                 }
 
-                // Ermögliche globalen Zugriff auf toggleMode
+                // Omogočimo globalni dostop do toggleMode
                 window.toggleMode = toggleMode;
 
-                // Funktion zur Aktualisierung des heutigen Datums
+                // Funkcija za posodobitev današnjega datuma
                 function updateDate() {
                     const dateElement = document.getElementById('current-date');
                     const now = new Date();
 
-                    // Formatierung des Datums als Tag/Monat/Jahr
-                    const day = String(now.getDate()).padStart(2, '0'); // Füge führende Null hinzu, falls nötig
-                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Monate sind nullbasiert
+                    // Oblikovanje datuma kot dan/mesec/leto
+                    const day = String(now.getDate()).padStart(2, '0'); // Dodaj začetno ničlo, če je potrebno
+                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Meseci so indeksirani od 0
                     const year = now.getFullYear();
 
                     const dateString = `${day}/${month}/${year}`;
                     dateElement.textContent = dateString;
                 }
 
-                updateDate(); // Zeigt sofort das aktuelle Datum an
+                updateDate(); // Takoj prikaže trenutni datum
             };
 
-            // Funktion zur Berechnung der Ergebnisse
+            // Funkcija za izračun rezultatov
             function calculate() {
                 const num1 = parseFloat(document.getElementById('num1').value);
                 const num2 = parseFloat(document.getElementById('num2').value);
                 const operation = document.getElementById('operation').value;
                 let result = "";
 
-                // Überprüfen, ob gültige Zahlen eingegeben wurden
+                // Preveri, če so vnesene veljavne številke
                 if (isNaN(num1) || isNaN(num2)) {
-                    result = "Bitte geben Sie gültige Zahlen ein.";
+                    result = "Prosimo, vnesite veljavne številke.";
                 } else {
-                    // Durchführung der ausgewählten mathematischen Operation
+                    // Izvedba izbrane matematične operacije
                     switch (operation) {
                         case "add":
                             result = num1 + num2;
@@ -69,70 +69,69 @@
                             result = num1 * num2;
                             break;
                         case "divide":
-                            result = num2 !== 0 ? num1 / num2 : "Fehler: Division durch 0 ist nicht erlaubt.";
+                            result = num2 !== 0 ? num1 / num2 : "Napaka: Deljenje z 0 ni dovoljeno.";
                             break;
                         default:
-                            result = "Fehler: Ungültige Operation.";
+                            result = "Napaka: Neveljavna operacija.";
                     }
                 }
 
-                // Anzeige des Ergebnisses auf der Seite
+                // Prikaz rezultata na strani
                 document.getElementById('result').textContent = `${result}`;
             }
         </script>
     </head>
     <body>
         <div class="container">
-            <!-- Seitenleiste -->
+            <!-- Stranska vrstica -->
             <div class="sidebar">
                 <div class="logo">
-                    <img src="Slike/logo.png" alt="Logo" id="logo">
+                    <img src="Slike/logo.png" alt="logo" id="logo">
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="indexnem.html" class="active">Startseite</a></li>
-                        <li><a href="iskanjenem.html">Suche</a></li>
-                        <li><a href="ocenenem.html">Bewertungen</a></li>
-                        <li><a href="kalkulatornem.html">Rechner</a></li>
-                        <li><a href="kalkulator.html">Slowenisch</a></li>
-                        <li><a href="kalkulatoren.html">Englisch</a></li>
+                        <li><a href="indexen.html" class="active">Home</a></li>
+                        <li><a href="iskanjeen.html">Search</a></li>
+                        <li><a href="oceneen.html">Reviews</a></li>
+                        <li><a href="kalkulatoren.html">Calculator</a></li>
+                        <li><a href="kalkulatornem.html">German</a></li>
+                        <li><a href="kalkulator.html">Slovenian</a></li>
                     </ul>
                 </nav>
                 <div class="mode-toggle" onclick="toggleMode()">
-                    <img src="Slike/mode.png" alt="Modus" id="mode-icon">
+                    <img src="Slike/mode.png" alt="Mode" id="mode-icon">
                 </div>
                 <div class="datum">
                     <span id="current-date"></span>
                 </div>
                 <div class="cookie">
-                    <p id="score">Geklickt: 0-mal</p>
-                    <img id="cookie" src="Slike/cookie.png" alt="Cookie-Clicker" onclick="cookieClick();">
+                    <p id="score">Clicked: 0</p>
+                    <img id="cookie" src="Slike/cookie.png" alt="cookieClicker" onClick="cookieClick();">
                 </div>
             </div>
 
             <div class="main-content">
-                <!-- Hauptüberschrift der Seite -->
-                <h1 class="featured-title">Rechner für Spielstatistiken</h1>
+                <!-- Glavni naslov strani -->
+                <h1 class="featured-title">Game Stats Calculator</h1>
                 
-                <!-- Einführungstext -->
+                <!-- Uvodno besedilo -->
                 <div class="text-container"> 
                 <p class="intro-text">
-                    Willkommen im Tool zur Berechnung von Spielstatistiken! Dieses Tool wurde für Spieler entwickelt, 
-                    die ihre Fähigkeiten verbessern und ihre Leistung in verschiedenen Spielen analysieren möchten. 
-                    Mit diesem Rechner können Sie schnell und einfach Ihre Erfolge bewerten, wie z. B. die insgesamt erzielten Punkte, 
-                    die durchschnittliche Spielzeit, das Verhältnis von Siegen zu Niederlagen und andere wichtige Statistiken, die für Ihren Fortschritt entscheidend sind.
+                    Welcome to the Game Stats Calculator! This tool is designed for players who who want to improve their skills and analyze their performance in different games.
+                     With this calculator, you can quickly and easily evaluate your achievements, such as total points scored, average playing time, 
+                     win-loss ratio and other key statistics relevant to your progress.
                 </p>
                 </div>
                 
-                <!-- Rechner für Spielstatistiken -->
+                <!-- Kalkulator za igralne statistike -->
                 <div class="calculator-section">       
                     <div class="calculator">
-                        <p>Geben Sie die erste Zahl ein:</p>
+                        <p>Enter the first data:</p>
                         <div>
                         <label for="num1"></label>
                         <input type="number" id="num1" placeholder="">
                         <br>
-                        <p>Wählen Sie eine Operation:</p>
+                        <p>Select an operation:</p>
                         <label for="operation"></label>
                         <select id="operation">
                             <option value="add">+</option>
@@ -141,11 +140,11 @@
                             <option value="divide">:</option>
                         </select>
                         <br>
-                        <p>Geben Sie die zweite Zahl ein:</p>
+                        <p>Enter the second data: </p>
                         <label for="num2"></label>
                         <input type="number" id="num2" placeholder="">
                         <br>
-                        <button onclick="calculate()">Berechnen</button>
+                        <button onclick="calculate()">Do the math</button>
                         <p id="result"></p>
                     </div>
                 </div>
