@@ -55,7 +55,7 @@
 
                 // Preveri, če so vnesene veljavne številke
                 if (isNaN(num1) || isNaN(num2)) {
-                    result = "Prosimo, vnesite veljavne številke.";
+                    result = "Please, enter a valid number.";
                 } else {
                     // Izvedba izbrane matematične operacije
                     switch (operation) {
@@ -69,10 +69,10 @@
                             result = num1 * num2;
                             break;
                         case "divide":
-                            result = num2 !== 0 ? num1 / num2 : "Napaka: Deljenje z 0 ni dovoljeno.";
+                            result = num2 !== 0 ? num1 / num2 : "Error, can't devide with 0!";
                             break;
                         default:
-                            result = "Napaka: Neveljavna operacija.";
+                            result = "Error: Invalid operation!";
                     }
                 }
 
