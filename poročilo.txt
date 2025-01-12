@@ -1,0 +1,21 @@
+Anže
+Dodana spletna stran vključuje kalkulator za igralne statistike, ki uporabnikom omogoča enostavno analizo dosežkov v igrah. 
+Kalkulator podpira osnovne matematične operacije in prikazuje rezultate neposredno na strani. Stran vsebuje tudi uvodni opis, 
+ki uporabnikom pojasni njen namen in uporabo. Nova vsebina je integrirana v obstoječi sistem, 
+ohranja enoten dizajn ter omogoča interaktivno uporabo, s čimer dopolnjuje sistem in izboljšuje uporabniško izkušnjo.
+
+Lan
+Na vsako stran sem dodal možnost prevoda in preklopa jezika posebej. 
+S tem je uporaba strani še lažja, saj lahko uporabniki enostavno preklopijo med slovenščino in nemščino
+z enim samim klikom na gumb. Preklop med jeziki je omogočen na vsakem koraku, kar uporabnikom omogoča 
+hitro in enostavno prilagajanje jezika brez potrebe po iskanju nastavitev.
+
+Ožbej
+Na vsako stran sem vključil možnost preklopa jezika med slovenščino in angleščino,
+kar uporabnikom omogoča enostavno uporabo spletne strani v jeziku, ki ga najbolje razumejo. 
+Sistem podpira celoten prevod vsebine, vključno z meniji, opisi, gumbi in interaktivnimi elementi. 
+Funkcionalnost je integrirana v obstoječi sistem, pri čemer ohranja konsistenten dizajn in prilagodljivost. 
+Ta izboljšava uporabniške izkušnje prispeva k večji dostopnosti spletne strani za širšo skupino uporabnikov 
+ter hkrati omogoča večje možnosti za mednarodno uporabo in prepoznavnost.
+
+
