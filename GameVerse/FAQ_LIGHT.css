@@ -1,0 +1,145 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc; /* Svetla ozadja */
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: #2a9df4; /* Svetlo modra */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    position: relative;
+    top: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar nav ul li a {
+    font-weight: bold;
+    color: #fff; /* Bela besedila */
+    background-color: #1c8fe3; /* Temno modra */
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 8px 0;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1) inset;
+    padding-left: 2px;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #1a75d2; /* Svetlejša modra */
+}
+
+.sidebar nav ul li a.active {
+    background-color: #156bb4; /* Aktivna modra */
+    color: #fff;
+    padding-left: 10px;
+}
+
+.sidebar nav ul li a.active:hover {
+    background-color: #145b94; /* Temnejša modra za hover */
+}
+
+/* FAQ Content Styles */
+.faq {
+    margin: 20px;
+    padding: 20px;
+    background-color: #e9ecef; /* Svetlo ozadje za FAQ */
+    border-radius: 10px;
+}
+
+.faq h2 {
+    color: #007bff; /* Modra barva za vprašanja */
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.faq p {
+    color: #333; /* Temna besedila za odgovore */
+    display: none; /* Skrij odgovore na začetku */
+    margin-bottom: 10px;
+}
+
+.faq h2:hover {
+    color: #0056b3; /* Svetlejša modra za hover */
+}
+
+/* Other styles remain unchanged */
+#logo {
+    height: 100px;
+    width: 120px;
+}
+
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.mode-toggle:hover {
+    opacity: 80%;
+}
+
+#mode-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.datum {
+    position: absolute;
+    bottom: 10px;
+    left: 65px;
+    font-size: 20px;
+    color: grey;
+}
+
+.cookie {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+}
+
+.cookie img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.cookie p {
+    font-size: 18px;
+    color: #333;
+    margin: 5px;
+}
+#Naslov_dark {
+    color: #000000; /* Bela barva za naslov v dark mode */
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link id="theme-style" rel="stylesheet" href="FAQ.css">
+    <script>
+        window.onload = function() {
+            const themeLink = document.getElementById('theme-style');
+
+            // Load the saved theme (light or dark) from localStorage
+            const savedMode = localStorage.getItem('theme') || 'dark'; // Default to 'dark' if no preference is set
+            themeLink.setAttribute('href', savedMode === 'dark' ? 'FAQ.css' : 'FAQ_LIGHT.css');
+
+            // Function to toggle between light and dark modes
+            function toggleMode() {
+                const currentMode = localStorage.getItem('theme') || 'dark';
+                if (currentMode === 'dark') {
+                    themeLink.setAttribute('href', 'FAQ_LIGHT.css');
+                    localStorage.setItem('theme', 'light'); // Save preference as 'light'
+                } else {
+                    themeLink.setAttribute('href', 'FAQ.css');
+                    localStorage.setItem('theme', 'dark'); // Save preference as 'dark'
+                }
+            }
+
+            // Expose toggleMode globally so it can be used in the HTML
+            window.toggleMode = toggleMode;
+
+            // Function to update today's date
+            function updateDate() {
+                const dateElement = document.getElementById('current-date');
+                const now = new Date();
+
+                // Format date as day/month/year
+                const day = String(now.getDate()).padStart(2, '0'); // Add leading zero if needed
+                const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                const year = now.getFullYear();
+
+                const dateString = `${day}/${month}/${year}`;
+                dateElement.textContent = dateString;
+            }
+
+            updateDate(); // Call once to show the date immediately
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="Slike/logo.png" alt="logo" id="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="indexen.html">Home</a></li>
+                    <li><a href="iskanjeen.html">Search</a></li>
+                    <li><a href="oceneen.html" class="active">Reviews</a></li>
+                    <li><a href="kalkulatoren.html">Calculator</a></li>
+                    <li><a href="ocenenem.html">German</a></li>
+                    <li><a href="ocene.html">Slovenian</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </nav>
+            <div class="mode-toggle" onclick="toggleMode()">
+                <img src="Slike/mode.png" alt="Mode" id="mode-icon">
+            </div>
+            <div class="datum">
+                <span id="current-date"></span>
+            </div>
+        </div>
+        <div class="container" id="Naslov_dark">
+            <h1>Frequently Asked Questions</h1>
+    
+            <div class="faq">
+                <h2>What is the purpose of this website?</h2>
+                <p>This website provides useful information and resources for users looking to learn more about our services and offerings.</p>
+            </div>
+    
+            <div class="faq">
+                <h2>How can I contact support?</h2>
+                <p>You can contact our support team by visiting the Contact Us page or sending an email to support@example.com.</p>
+            </div>
+    
+            <div class="faq">
+                <h2>What payment methods do you accept?</h2>
+                <p>We accept major credit cards, PayPal, and bank transfers for your convenience.</p>
+            </div>
+    
+        </div>
+    
+        <script>
+            document.querySelectorAll('.faq h2').forEach((faqHeader) => {
+                faqHeader.addEventListener('click', () => {
+                    const faqContent = faqHeader.nextElementSibling;
+                    const isOpen = faqContent.style.display === 'block';
+    
+                    document.querySelectorAll('.faq p').forEach(p => p.style.display = 'none');
+    
+                    faqContent.style.display = isOpen ? 'none' : 'block';
+                });
+            });
+        </script>
+        </body>
+</html>
