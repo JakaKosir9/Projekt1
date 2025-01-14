@@ -18,4 +18,13 @@ Funkcionalnost je integrirana v obstoječi sistem, pri čemer ohranja konsistent
 Ta izboljšava uporabniške izkušnje prispeva k večji dostopnosti spletne strani za širšo skupino uporabnikov 
 ter hkrati omogoča večje možnosti za mednarodno uporabo in prepoznavnost.
 
+Luka
+Med izdelavo FAQ strani sem vključil več pomembnih elementov za izboljšanje uporabniške izkušnje. 
+Najprej sem ustvaril jasen in berljiv dizajn, ki ločuje vprašanja in odgovore s pomočjo barv in prostorov. 
+Implementiral sem funkcijo za preklapljanje med temnim in svetlim načinom, 
+ki uporabnikom omogoča izbiro njihovega priljubljenega načina. 
+Dodal sem interaktivne elemente, kot so skriti odgovori, ki se prikažejo ob kliku na vprašanja. 
+Poskrbel sem za dinamični prikaz trenutnega datuma na strani. 
+Na koncu sem zagotovil, da so vse povezave in skripte pravilno delovale ter se nalagale glede na uporabniške preference.
+
 
